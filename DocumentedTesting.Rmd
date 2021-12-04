@@ -37,3 +37,12 @@ cacheSolve(helper)
 
 We can see that the second and third time we run cache solve for each helper,
 we return the cached one.
+
+```{r testing4}
+helper$set(inverseMatrix2)
+cacheSolve(helper)
+cacheSolve(helper)
+```
+
+If we set the helper for other function, the cache cleans, and it calculates
+again the cached inverse.

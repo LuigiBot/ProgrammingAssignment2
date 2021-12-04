@@ -207,7 +207,20 @@ helper2 &lt;- makeCacheMatrix(inverseMatrix2)</code></pre>
 ## [1,]  0.50  1.110223e-16 -0.50
 ## [2,]  0.75  1.500000e+00 -2.75
 ## [3,] -0.25 -5.000000e-01  1.25</code></pre>
-<p>We can see that the second time we run cache solve, we return the cached one.</p>
+<p>We can see that the second and third time we run cache solve for each helper, we return the cached one.</p>
+<pre class="r"><code>helper$set(inverseMatrix2)
+cacheSolve(helper)</code></pre>
+<pre><code>##            [,1]       [,2]      [,3]
+## [1,]  0.6666667 -0.3333333 -2.333333
+## [2,]  0.0000000  0.0000000  1.000000
+## [3,] -0.3333333  0.6666667  1.666667</code></pre>
+<pre class="r"><code>cacheSolve(helper)</code></pre>
+<pre><code>## Getting cached data</code></pre>
+<pre><code>##            [,1]       [,2]      [,3]
+## [1,]  0.6666667 -0.3333333 -2.333333
+## [2,]  0.0000000  0.0000000  1.000000
+## [3,] -0.3333333  0.6666667  1.666667</code></pre>
+<p>If we set the helper for other function, the cache cleans, and it calculates again the cached inverse.</p>
 </div>
 
 

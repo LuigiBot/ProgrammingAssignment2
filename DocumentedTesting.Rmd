@@ -1,0 +1,39 @@
+---
+title: "Documented Testing"
+date: "12/4/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Testing of Cache Matrix
+
+The testing of cache matrix was done with two different matrices, which we'll
+call **inverseMatrix1** and **inverseMatrix2**, that we know are invertible.
+
+```{r testing}
+source("cachematrix.R")
+inverseMatrix <- matrix(c(2, -1, 0, 1, 2, 1, 3, 4, 3), nrow=3, ncol=3)
+inverseMatrix2 <- matrix(c(2,1,0,3,-1,1,1,2,0), nrow=3, ncol=3)
+```
+
+Then we'll create the helper vector that saves our matrices. 
+```{r testing2}
+helper <- makeCacheMatrix(inverseMatrix)
+helper2 <- makeCacheMatrix(inverseMatrix2)
+```
+
+Finally, we call the cacheSolve function more than once per helper vector.
+
+```{r testing3}
+cacheSolve(helper)
+cacheSolve(helper)
+cacheSolve(helper2)
+cacheSolve(helper2)
+cacheSolve(helper)
+```
+
+We can see that the second and third time we run cache solve for each helper,
+we return the cached one.
